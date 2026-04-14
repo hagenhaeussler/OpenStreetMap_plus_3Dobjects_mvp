@@ -17,6 +17,9 @@ export function initMap(container: HTMLDivElement) {
     zoom: INITIAL_VIEW.zoom,
     pitch: INITIAL_VIEW.pitch,
     bearing: INITIAL_VIEW.bearing,
+    dragRotate: true,
+    pitchWithRotate: true,
+    touchPitch: true,
     canvasContextAttributes: {
       antialias: true,
     },
@@ -26,6 +29,8 @@ export function initMap(container: HTMLDivElement) {
   });
 
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
+  map.dragRotate.enable();
+  map.touchZoomRotate.enableRotation();
 
   return map;
 }
